@@ -30,9 +30,9 @@ class AlertsController extends GetxController {
      */
     this.listData.add(new products("0000001", "Rp3.500", "0", "Rp3.500", true));
     this.listData.add(
-        new products("0000002", "Rp1700.500", "Rp16.500", "Rp3.300", false));
+        new products("0000002", "Rp17.500", "Rp16.500", "Rp3.300", false));
     this.listData.add(
-        new products("0000000", "Rp4200.000", "Rp39.600", "Rp3.300", false));
+        new products("0000000", "Rp42.000", "Rp39.600", "Rp3.300", false));
 
     update();
   }
