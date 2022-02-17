@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_app/models/products.dart';
 import 'package:getx_app/pages/alerts/alerts_controller.dart';
+import 'package:getx_app/pages/others/add_alert_page.dart';
 import 'package:getx_app/widgets/child_products.dart';
 
 AlertsController controller = Get.put(AlertsController());
@@ -53,7 +54,9 @@ class CustomPicks extends State<AlertsPage> {
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
                           ),
-                          onPressed: () {controller.showDialogItem(context);},
+                          onPressed: () {
+                            controller.showDialogItem(context);
+                          },
                         ),
                       ),
                       SizedBox(width: 8.0),
@@ -66,10 +69,25 @@ class CustomPicks extends State<AlertsPage> {
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
                           ),
-                          onPressed: () { controller.buyItem(context); },
+                          onPressed: () {
+                            controller.buyItem(context);
+                          },
                         ),
                       )
                     ],
+                  ),
+                  SizedBox(height: 16.0),
+                  TextButton(
+                    child: Text("Tambah Counter"),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                    onPressed: () {
+                      Get.to(AddAlertPage());
+                    },
                   ),
                 ])));
   }

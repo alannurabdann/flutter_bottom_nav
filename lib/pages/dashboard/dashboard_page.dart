@@ -15,7 +15,10 @@ class DashboardPage extends StatelessWidget {
     return GetBuilder<DashboardController>(
       builder: (controller) {
         return Scaffold(
-          appBar: AppBar(title: Text(controller.title), elevation: 8,),
+          appBar: AppBar(
+            title: Text(controller.title),
+            elevation: 8,
+          ),
           body: SafeArea(
             child: IndexedStack(
               index: controller.tabIndex,
@@ -53,11 +56,12 @@ class DashboardPage extends StatelessWidget {
                   position: BadgePosition.topEnd(),
                   borderRadius: BorderRadius.circular(100),
                   child: Icon(CupertinoIcons.bell),
-                  badgeContent: Text("105",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      )),
+                  badgeContent:
+                      Obx(() => Text(controller.counter.value.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ))),
                 ),
               ),
               _bottomNavigationBarItem(

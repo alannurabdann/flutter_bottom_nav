@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 class DashboardController extends GetxController {
   var tabIndex = 0;
   var title = "Home";
+  var counter = 109.obs;
 
   void changeTabIndex(int index) {
     tabIndex = index;
@@ -23,5 +24,13 @@ class DashboardController extends GetxController {
         break;
     }
     update();
+  }
+
+  void addCounter(){
+    this.counter.value += 1;
+  }
+
+  void minusCounter(){
+    this.counter.value -= 1;
   }
 }
