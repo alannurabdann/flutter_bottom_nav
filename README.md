@@ -10,3 +10,4 @@ In this example, we made a bottom navigation bar using GetX state management, we
 - Using controller parameters inside page
 - Create badge counter using "Badges" https://pub.dev/packages/badges
 - Create listview inside dialog
+- Firebase Remote Config

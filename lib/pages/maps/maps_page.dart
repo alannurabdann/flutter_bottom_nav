@@ -13,6 +13,7 @@ class MapPage extends StatefulWidget {
 }
 
 class mapState extends State<MapPage> {
+  //fixme : google api key
   String googleApikey = "place_api_key_here";
   GoogleMapController? mapController; //contrller for Google map
   CameraPosition? cameraPosition;
