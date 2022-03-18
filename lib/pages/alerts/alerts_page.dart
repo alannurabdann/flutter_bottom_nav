@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_app/models/products.dart';
 import 'package:getx_app/pages/alerts/alerts_controller.dart';
+import 'package:getx_app/pages/dashboard/dashboard_controller.dart';
 import 'package:getx_app/pages/others/add_alert_page.dart';
 import 'package:getx_app/widgets/child_products.dart';
 
@@ -13,13 +14,16 @@ class AlertsPage extends StatefulWidget {
 }
 
 class CustomPicks extends State<AlertsPage> {
+
+  DashboardController _controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
             padding: EdgeInsets.all(16.0),
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ListView.separated(
@@ -88,6 +92,40 @@ class CustomPicks extends State<AlertsPage> {
                     onPressed: () {
                       Get.to(AddAlertPage());
                     },
+                  ),
+                  SizedBox(height: 8.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          child: Text("Kurangi dong"),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.purple),
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                          ),
+                          onPressed: () {
+                            _controller.minusCounter();
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 8.0),
+                      Expanded(
+                        child: TextButton(
+                          child: Text("Tambah lagi"),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.pink),
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                          ),
+                          onPressed: () {
+                            _controller.addCounter();
+                          },
+                        ),
+                      )
+                    ],
                   ),
                 ])));
   }
