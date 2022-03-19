@@ -1,14 +1,37 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:need_resume/need_resume.dart';
 
 import 'news_controller.dart';
-import 'package:getx_app/logins/login_page.dart';
-import 'package:getx_app/pages/categories/category_page.dart';
 import 'package:getx_app/pages/news/news_controller.dart';
 
-class NewsPage extends GetView<NewsController> {
+import 'news_page_two.dart';
+
+class NewsPage extends StatefulWidget {
+  @override
+  State<NewsPage> createState() => _newspage();
+}
+
+class _newspage extends State<NewsPage>  {
+  NewsController controller = Get.find();
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   setState(() {
+  //     controller.getRandomNumber();
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
+
+    setState(() {
+      controller.getRandomNumber();
+    });
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -18,27 +41,16 @@ class NewsPage extends GetView<NewsController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ElevatedButton(
-                    child: Text("Goto Login",
+                    child: Text("Page Two",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold)),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.yellow),
                     ),
-                    onPressed: () {
-                      Get.to(LoginPage());
+                    onPressed: () {controller.gotoNextPage();
                     }),
-                ElevatedButton(
-                    child: Text("Goto Categories",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold)),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
-                    ),
-                    onPressed: () {
-                      Get.to(() => CategoryPage());
-                    }),
+                Text(controller.randomNumber.value.toString()),
               ]),
         ),
       ),

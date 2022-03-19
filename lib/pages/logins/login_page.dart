@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:getx_app/logins/login_controller.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,7 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginState extends State<LoginPage> {
-  LoginController controller = Get.put(LoginController());
+ //LoginController controller = Get.put(LoginController());
 
   bool _obscureText = true;
   void _toggle() {
@@ -112,4 +111,6 @@ class LoginState extends State<LoginPage> {
       ],
     ));
   }
+
+  static LoginController() {}
 }

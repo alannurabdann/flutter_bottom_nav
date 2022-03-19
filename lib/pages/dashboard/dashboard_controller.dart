@@ -1,9 +1,14 @@
-import 'package:get/get.dart';
+import 'dart:developer';
 
-class DashboardController extends GetxController {
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+
+class DashboardController extends FullLifeCycleController with FullLifeCycleMixin {
   var tabIndex = 0;
   var title = "Home";
   var counter = 109.obs;
+  var logger = Logger();
 
   void changeTabIndex(int index) {
     tabIndex = index;
@@ -32,5 +37,29 @@ class DashboardController extends GetxController {
 
   void minusCounter(){
     this.counter.value -= 1;
+  }
+
+    @override
+  void onDetached() {
+    // TODO: implement onDetached
+     logger.d('on detached');
+  }
+
+  @override
+  void onInactive() {
+    // TODO: implement onInactive
+     logger.d('on inactive');
+  }
+
+  @override
+  void onPaused() {
+    // TODO: implement onPaused
+     logger.d('on paused');
+  }
+
+  @override
+  void onResumed() {
+    // TODO: implement onResumed
+    logger.d('on resume');
   }
 }

@@ -5,7 +5,7 @@ import 'package:getx_app/pages/maps/maps_page.dart';
 
 class HomePage extends StatelessWidget {
 
-  HomeController controller = Get.put(HomeController());
+  HomeController controller = Get.put(HomeController()); 
 
   @override
   Widget build(BuildContext context) {

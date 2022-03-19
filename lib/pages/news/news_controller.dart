@@ -1,12 +1,17 @@
+import 'dart:math';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:getx_app/pages/news/news_page_two.dart';
 
-class NewsController extends GetxController {
+class NewsController extends FullLifeCycleController with FullLifeCycleMixin {
 
   var branch = "branch default".obs;
   var greetings = "greetings default".obs;
+  var randomNumber = 0.obs;
 
   @override
   void onInit() async {
@@ -54,5 +59,40 @@ class NewsController extends GetxController {
     }
   }
 
+  void getRandomNumber(){
+      var random = new Random();
+ 
+    // Printing Random Number between 1 to 100 on Terminal Window.
+    randomNumber.value =  random.nextInt(100);
+  }
 
+  void gotoNextPage(){
+    Get.to(() => newsPageTwo());
+  }
+
+  @override
+  void onDetached() {
+    // TODO: implement onDetached
+     debugPrint('on detached');
+  }
+
+  @override
+  void onInactive() {
+    // TODO: implement onInactive
+     debugPrint('on inactive');
+  }
+
+  @override
+  void onPaused() {
+    // TODO: implement onPaused
+     debugPrint('on paused');
+  }
+
+  @override
+  void onResumed() {
+    // TODO: implement onResumed
+    debugPrint('on resume');
+    this.getRandomNumber();
+    update();
+  }
 }
