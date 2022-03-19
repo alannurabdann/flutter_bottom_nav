@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_app/pages/home/home_controller.dart';
 import 'package:getx_app/pages/maps/maps_page.dart';
+import 'package:getx_app/pages/news/news_page_two.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -19,7 +20,8 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 child: Text("Pick a place"),
                 onPressed: () {
-                  Get.to(MapPage());
+                  //Get.to(MapPage());
+                  Get.to(() => newsPageTwo());
                 }),
             SizedBox(height: 16.0),
             Obx(() => Text(

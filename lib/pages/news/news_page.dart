@@ -2,36 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:need_resume/need_resume.dart';
+import 'package:getx_app/pages/alerts/alerts_page.dart';
 
 import 'news_controller.dart';
 import 'package:getx_app/pages/news/news_controller.dart';
 
 import 'news_page_two.dart';
 
-class NewsPage extends StatefulWidget {
-  @override
-  State<NewsPage> createState() => _newspage();
-}
-
-class _newspage extends State<NewsPage>  {
-  NewsController controller = Get.find();
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   setState(() {
-  //     controller.getRandomNumber();
-  //   });
-  // }
+class NewsPage extends StatelessWidget {
+  NewsController controller = Get.put(NewsController());
 
   @override
   Widget build(BuildContext context) {
-
-    setState(() {
-      controller.getRandomNumber();
-    });
-
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -48,12 +30,25 @@ class _newspage extends State<NewsPage>  {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.yellow),
                     ),
-                    onPressed: () {controller.gotoNextPage();
+                    onPressed: () {
+                      controller.gotoNextPage();
                     }),
-                Text(controller.randomNumber.value.toString()),
+                randomWidget(),
               ]),
         ),
       ),
+    );
+  }
+}
+
+class randomWidget extends StatelessWidget {
+  NewsController c = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<NewsController>(
+      initState: (_) {c.getRandomNumber();},
+      dispose: (_) {c.getRandomNumber();},
+      builder: (_) => Text(c.randomNumber.string),
     );
   }
 }

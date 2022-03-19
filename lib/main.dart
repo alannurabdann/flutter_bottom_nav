@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_app/pages/news/news_controller.dart';
+import 'package:logger/logger.dart';
 
 import 'routes/app_pages.dart';
 import 'routes/app_routes.dart';
@@ -13,6 +15,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -22,6 +25,14 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
+      routingCallback: (routing){
+        print("current route: ${routing!.current.toString()}");
+        if (routing.current ==  "/"){
+          NewsController nc = Get.put(NewsController());
+          nc.getRandomNumber();
+          nc.update();
+        }
+      },
     );
   }
 }

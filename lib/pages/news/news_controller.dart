@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getx_app/pages/news/news_page_two.dart';
 
-class NewsController extends FullLifeCycleController with FullLifeCycleMixin {
+class NewsController extends GetxController {
 
   var branch = "branch default".obs;
   var greetings = "greetings default".obs;
@@ -70,29 +70,4 @@ class NewsController extends FullLifeCycleController with FullLifeCycleMixin {
     Get.to(() => newsPageTwo());
   }
 
-  @override
-  void onDetached() {
-    // TODO: implement onDetached
-     debugPrint('on detached');
-  }
-
-  @override
-  void onInactive() {
-    // TODO: implement onInactive
-     debugPrint('on inactive');
-  }
-
-  @override
-  void onPaused() {
-    // TODO: implement onPaused
-     debugPrint('on paused');
-  }
-
-  @override
-  void onResumed() {
-    // TODO: implement onResumed
-    debugPrint('on resume');
-    this.getRandomNumber();
-    update();
-  }
 }
