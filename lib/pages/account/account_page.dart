@@ -8,18 +8,20 @@ class AccountPage extends GetView<AccountController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Obx(() => Text("Counter ${controller.counter.value}")),
-              ElevatedButton(
-                child: Text("Increase"),
-                onPressed: () => controller.increaseCounter(),
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Obx(() => Text("Counter ${controller.counter.value}")),
+            ElevatedButton(
+              child: Text("Increase"),
+              onPressed: () => controller.increaseCounter(),
+            ),
+            Divider(),
+            ListView.builder(itemBuilder: (context, idx) {
+              return Text(controller.recentSearch[idx]);
+            }),
+          ],
         ),
       ),
     );
